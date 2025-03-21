@@ -44,7 +44,13 @@ class _PerguntaAppState extends State<PerguntaApp> {
         _pontuacaoTotal += pontuacao;
       });
     }
-    print(_pontuacaoTotal);
+  }
+
+  void _reiniciarQuestionario() {
+    setState(() {
+      _perguntaSelecionada = 0;
+      _pontuacaoTotal = 0;
+    });
   }
 
   bool get temPerguntaSelecionada {
@@ -63,7 +69,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                   perguntaSelecionada: _perguntaSelecionada,
                   quandoResponder: _responder,
                 )
-                : const Resultado(),
+                : Resultado(_pontuacaoTotal, _reiniciarQuestionario),
       ),
     );
   }
@@ -77,17 +83,3 @@ class PerguntaApp extends StatefulWidget {
     return _PerguntaAppState();
   }
 }
-
-// Fala, pessoal!
-
-// Na próxima aula o professor vai, novamente, dar uma refatorada no código e irá gerar um pequeno problema dentro do return de Resposta no arquivo questionario.dart.
-
-// Para resolver é bem simples, basta adicionar uma função toString() e int.parse() lá no return.
-
-// O código irá ficar dessa forma:
-
-// return Resposta(
-//             resp['texto'].toString(),
-//             () => quandoResponder(int.parse(resp['pontuacao'].toString())),
-//           );
-// Bons estudos!
