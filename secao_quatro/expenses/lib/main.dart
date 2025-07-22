@@ -15,11 +15,19 @@ class ExpensesApp extends StatelessWidget {
     return MaterialApp(
       home: const MyHomePage(),
       theme: ThemeData(
-        useMaterial3: false,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+          titleLarge: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.purple,
           foregroundColor: Colors.white,
         ),
+        useMaterial3: false,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.amber,
           primary: Colors.purple,
@@ -112,3 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+// Com as atualizações do Flutter, algumas palavras-chave são modificadas, como 
+//foi o caso do que aconteceu com essa. Para quem estiver obtendo a advertência 
+//'title'/'headline6' is deprecated and shouldn't be used, será preciso fazer 
+//uma correção. Sempre que for necessário utilizar 'title' ou 'headline6', 
+//substitua por 'titleLarge'.
